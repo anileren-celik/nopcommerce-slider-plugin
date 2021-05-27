@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Eren",
+  "FriendlyName": "Eren Test Slider",
+  "SystemName": "Eren.Widgets.Slider",
+  "Version": "1.0",
+  "SupportedVersions": [ "4.20" ],
+  "Author": "nopCommerce team",
+  "DisplayOrder": 1,
+  "FileName": "Eren.Widgets.Slider.dll",
+  "Description": "This plugin just a slider"
+}
