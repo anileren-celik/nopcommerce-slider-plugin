@@ -1,42 +1,67 @@
+@model ErenSliderSettings
 @{
     Html.AddScriptParts("~/Plugins/Eren.Widgets.Slider/Content/lib/swiper/swiper-bundle.js"); 
     Html.AddCssFileParts("~/Plugins/Eren.Widgets.Slider/Content/css/style.css"); 
     Html.AddCssFileParts("~/Plugins/Eren.Widgets.Slider/Content/lib/swiper/swiper-bundle.css"); 
 }
 <div class="swiper-container">
-    <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
         <!-- Slides -->
         <div class="swiper-slide">Slide 1</div>
         <div class="swiper-slide">Slide 2</div>
         <div class="swiper-slide">Slide 3</div>
     </div>
-    <!-- If we need pagination -->
-    <div class="swiper-pagination"></div>
+    
+    @if (Model.PaginationEnabled)
+    {
+        <div class="swiper-pagination"></div>
+    }
+    
 
-    <!-- If we need navigation buttons -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+     @if (Model.NavigationEnabled)
+     {
+         <div class="swiper-button-prev"></div>
+         <div class="swiper-button-next"></div>
+     }
+    
+    @if (Model.ScroolBarEnabled)
+     {
+         <div class="swiper-scrollbar"></div>
+     }
 </div>
 
 <script type="text/javascript">
-    const swiper = new Swiper('.swiper-container', {
-      // Optional parameters
-      direction: 'horizontal',    
-      // If we need pagination
-      pagination: {
-        el: '.swiper-pagination',
-      },
-    
-      // Navigation arrows
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    
-      // And if we need scrollbar
-      scrollbar: {
-        el: '.swiper-scrollbar',
-      },
+    const swiper = new Swiper('@Model.ContainerCssSelector', {
+
+        direction: '@Model.Direction.ToString().ToLower()',
+        loop: @Model.Loop.ToString().ToLower(),
+        speed: @Model.Speed    
+        @if (Model.PaginationEnabled)
+        {
+            <text>
+                pagination: {
+                el: '@Model.PaginationCssSelector',
+                },
+            </text>
+        }
+        @if (Model.NavigationEnabled)
+        {
+            <text>
+            navigation:{
+                nextEl:
+                '@Model.NavigationNextCssSelector',
+                prevEl:
+                '@Model.NavigationPrevCssSelector',
+            },
+            </text>
+        }
+        @if (Model.ScroolBarEnabled)
+        {
+            <text>
+            scrollbar: {
+                el: '@Model.ScrollBarCssSelector',
+            },
+            </text>
+        }      
     });
 </script>

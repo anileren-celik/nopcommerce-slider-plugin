@@ -43,6 +43,9 @@
     <None Update="Content\lib\swiper\swiper-bundle.js.map">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Views\Configure.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.jpg">
@@ -54,6 +57,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\lib\swiper" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Models\ErenSliderConfigureModel.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 
   
